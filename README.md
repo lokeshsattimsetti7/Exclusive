@@ -1,7 +1,6 @@
 # 🛍️ Exclusive – E-Commerce Website
 
-**🔗 Live Demo:** [https://exclusive-website-lokeshsattimsetti7s-projects.vercel.app/](https://exclusive-website-lokeshsattimsetti7s-projects.vercel.app/)
-**📦 GitHub Repo:** [https://github.com/lokeshsattimsetti7/ExclusiveWebsite.git](https://github.com/lokeshsattimsetti7/ExclusiveWebsite.git)
+**🔗 Live Demo:** ("https://exclusive-6si1og1w6-lokeshsattimsetti7s-projects.vercel.app/")
 
 ## 📄 Overview
 
