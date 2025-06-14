@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./Cart.module.css";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import one from "./Gamepad.png";
-import two from "./Monitor.png";
 
 const QuantityBox = ({ quantity, setQuantity }) => {
   const changeQuantity = (delta) => {
@@ -22,25 +21,20 @@ const QuantityBox = ({ quantity, setQuantity }) => {
 
 const Cart = () => {
   const location = useLocation();
-  const passedQty = location.state?.quantity || 1;
+  const passedQty = location.state?.quantity || 0;
 
-  const [monitorQty, setMonitorQty] = useState(1);
   const [gamepadQty, setGamepadQty] = useState(passedQty);
   const navigate = useNavigate();
 
-  const monitorPrice = 650;
   const gamepadPrice = 550;
 
-  const monitorSubtotal = monitorQty * monitorPrice;
   const gamepadSubtotal = gamepadQty * gamepadPrice;
-  const total = monitorSubtotal + gamepadSubtotal;
+  const total = gamepadSubtotal;
 
   const handleProceedToCheckout = () => {
     navigate("/bill", {
       state: {
-        monitorQty,
         gamepadQty,
-        monitorSubtotal,
         gamepadSubtotal,
         total,
       },
@@ -49,7 +43,6 @@ const Cart = () => {
 
   return (
     <div className={styles.MainSection}>
-      {/* Breadcrumb */}
       <div className={styles.SectionOne}>
         <li>
           <Link to="/">Home</Link>
@@ -60,22 +53,12 @@ const Cart = () => {
         </li>
       </div>
 
-      {/* Cart Items */}
       <div className={styles.SectionTwo}>
         <div className={styles.Row}>
           <p>Product</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Subtotal</p>
-        </div>
-
-        <div className={styles.Row}>
-          <p>
-            <img src={two} alt="Monitor" /> LCD Monitor
-          </p>
-          <p>${monitorPrice}</p>
-          <QuantityBox quantity={monitorQty} setQuantity={setMonitorQty} />
-          <p>${monitorSubtotal}</p>
         </div>
 
         <div className={styles.Row}>
@@ -88,12 +71,14 @@ const Cart = () => {
         </div>
 
         <div className={styles.LastSection}>
-          <button>Return To Shop</button>
+          <Link to="/">
+            <button>Return To Shop</button>
+          </Link>
+
           <button>Update Cart</button>
         </div>
       </div>
 
-      {/* Cart Total */}
       <div className={styles.ThirdSection}>
         <div className={styles.LeftSide}>
           <form
